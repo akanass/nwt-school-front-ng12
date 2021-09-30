@@ -5,7 +5,7 @@ import { MatIconRegistry } from '@angular/material/icon';
 @Component({
   selector: 'nwt-root',
   templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ]
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
   /**
@@ -22,5 +22,6 @@ export class AppComponent implements OnInit {
   /**
    * OnInit implementation
    */
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 }
