@@ -45,6 +45,10 @@ export class PeopleComponent implements OnInit {
    */
   ngOnInit(): void {
     this._http.get<Person[]>(this._backendURL.allPeople)
+      .pipe(
+        filter((people: Person[]) => !!people),
+        defaultIfEmpty([])
+      )
       .subscribe({ next: (people: Person[]) => this._people = people });
   }
 
