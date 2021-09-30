@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Person } from '../shared/types/person.type';
+import { defaultIfEmpty, filter } from 'rxjs';
 
 @Component({
   selector: 'nwt-person',
@@ -10,7 +11,7 @@ import { Person } from '../shared/types/person.type';
 })
 export class PersonComponent implements OnInit {
   // private property to store person value
-  private _person: Person | undefined;
+  private _person: Person;
   // private property to store all backend URLs
   private readonly _backendURL: any;
 
@@ -35,7 +36,7 @@ export class PersonComponent implements OnInit {
   /**
    * Returns private property _person
    */
-  get person(): Person | undefined {
+  get person(): Person {
     return this._person;
   }
 
@@ -44,7 +45,11 @@ export class PersonComponent implements OnInit {
    */
   ngOnInit(): void {
     this._http.get<Person[]>(this._backendURL.allPeople)
-      .subscribe({ next: (people: Person[]) => this._person = people.shift() });
+      .pipe(
+        filter( (people: Person[]) => !!people),
+        defaultIfEmpty([{} as Person])
+      )
+      .subscribe({ next: (people: Person[]) => this._person = people[0] });
   }
 
   /**
@@ -52,6 +57,10 @@ export class PersonComponent implements OnInit {
    */
   random(): void {
     this._http.get<Person>(this._backendURL.randomPeople)
+      .pipe(
+        filter( (person: Person) => !!person),
+        defaultIfEmpty({} as Person)
+      )
       .subscribe({ next: (person: Person) => this._person = person });
   }
 }
