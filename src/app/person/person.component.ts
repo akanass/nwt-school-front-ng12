@@ -35,7 +35,7 @@ export class PersonComponent implements OnInit {
   /**
    * Returns private property _person
    */
-  get person(): any {
+  get person(): Person | undefined {
     return this._person;
   }
 
