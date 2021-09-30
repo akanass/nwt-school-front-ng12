@@ -8,7 +8,7 @@ import { Person } from '../types/person.type';
 })
 export class CardComponent implements OnInit {
   // private property to store person value
-  private _person: Person | undefined;
+  private _person: Person;
 
   /**
    * Component constructor
@@ -20,7 +20,7 @@ export class CardComponent implements OnInit {
   /**
    * Returns private property _person
    */
-  get person(): Person | undefined {
+  get person(): Person {
     return this._person;
   }
 
@@ -28,7 +28,7 @@ export class CardComponent implements OnInit {
    * Sets private property _person
    */
   @Input()
-  set person(person: Person | undefined) {
+  set person(person: Person) {
     this._person = person;
   }
 
