@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
 })
 export class PeopleComponent implements OnInit {
 // private property to store people value
-  private _people: Person[] | undefined;
+  private _people: Person[];
   // private property to store all backend URLs
   private readonly _backendURL: any;
 
@@ -35,7 +35,7 @@ export class PeopleComponent implements OnInit {
   /**
    * Returns private property _people
    */
-  get people(): Person[] | undefined {
+  get people(): Person[] {
     return this._people;
   }
 
