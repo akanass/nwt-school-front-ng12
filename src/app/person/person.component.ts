@@ -10,7 +10,7 @@ import { Person } from '../shared/types/person.type';
 })
 export class PersonComponent implements OnInit {
   // private property to store person value
-  private _person: Person | undefined;
+  private _person: Person;
   // private property to store all backend URLs
   private readonly _backendURL: any;
 
@@ -35,7 +35,7 @@ export class PersonComponent implements OnInit {
   /**
    * Returns private property _person
    */
-  get person(): Person | undefined {
+  get person(): Person {
     return this._person;
   }
 
@@ -44,7 +44,7 @@ export class PersonComponent implements OnInit {
    */
   ngOnInit(): void {
     this._http.get<Person[]>(this._backendURL.allPeople)
-      .subscribe({ next: (people: Person[]) => this._person = people.shift() });
+      .subscribe({ next: (people: Person[]) => this._person = people[0] });
   }
 
   /**
