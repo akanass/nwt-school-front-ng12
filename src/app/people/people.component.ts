@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Person } from '../shared/types/person.type';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from '../../environments/environment';
-import { defaultIfEmpty, filter, map, mergeMap, Observable } from 'rxjs';
+import { filter, map, mergeMap, Observable } from 'rxjs';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogComponent } from '../shared/dialog/dialog.component';
+import { PeopleService } from '../shared/services/people.service';
 
 @Component({
   selector: 'nwt-people',
@@ -14,8 +13,6 @@ import { DialogComponent } from '../shared/dialog/dialog.component';
 export class PeopleComponent implements OnInit {
   // private property to store people value
   private _people: Person[];
-  // private property to store all backend URLs
-  private readonly _backendURL: any;
   // private property to store dialogStatus value
   private _dialogStatus: string;
   // private property to store dialog reference
@@ -24,20 +21,9 @@ export class PeopleComponent implements OnInit {
   /**
    * Component constructor
    */
-  constructor(private _http: HttpClient, private _dialog: MatDialog) {
+  constructor(private _peopleService: PeopleService, private _dialog: MatDialog) {
     this._people = [];
-    this._backendURL = {};
     this._dialogStatus = 'inactive';
-
-    // build backend base url
-    let baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;
-    if (environment.backend.port) {
-      baseUrl += `:${environment.backend.port}`;
-    }
-
-    // build all backend urls
-    // @ts-ignore
-    Object.keys(environment.backend.endpoints).forEach(k => this._backendURL[ k ] = `${baseUrl}${environment.backend.endpoints[ k ]}`);
   }
 
   /**
@@ -58,11 +44,8 @@ export class PeopleComponent implements OnInit {
    * OnInit implementation
    */
   ngOnInit(): void {
-    this._http.get<Person[]>(this._backendURL.allPeople)
-      .pipe(
-        filter((people: Person[]) => !!people),
-        defaultIfEmpty([])
-      )
+    this._peopleService
+      .fetch()
       .subscribe({ next: (people: Person[]) => this._people = people });
   }
 
@@ -70,8 +53,9 @@ export class PeopleComponent implements OnInit {
    * Function to delete one person
    */
   delete(person: Person): void {
-    this._http.delete(this._backendURL.onePeople.replace(':id', person.id))
-      .subscribe({ next: () => this._people = this._people.filter((p: Person) => p.id !== person.id) });
+    this._peopleService
+      .delete(person.id as string)
+      .subscribe((id: string) => this._people = this._people.filter((p: Person) => p.id !== id));
   }
 
   /**
@@ -111,6 +95,6 @@ export class PeopleComponent implements OnInit {
    * Add new person
    */
   private _add(person: Person | undefined): Observable<Person> {
-    return this._http.post<Person>(this._backendURL.allPeople, person, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) });
+    return this._peopleService.create(person as Person);
   }
 }
