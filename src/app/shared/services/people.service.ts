@@ -44,6 +44,13 @@ export class PeopleService {
   }
 
   /**
+   * Returns private property _defaultPerson
+   */
+  get defaultPerson(): Person {
+    return this._defaultPerson;
+  }
+
+  /**
    * Function to return list of person
    */
   fetch(): Observable<Person[]> {

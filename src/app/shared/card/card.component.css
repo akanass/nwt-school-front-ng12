@@ -138,3 +138,7 @@ img {
     margin-right: 5px;
   }
 }
+
+.managerLink:hover {
+  cursor: pointer;
+}

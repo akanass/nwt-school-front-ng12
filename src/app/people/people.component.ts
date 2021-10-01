@@ -4,6 +4,7 @@ import { filter, map, mergeMap, Observable } from 'rxjs';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogComponent } from '../shared/dialog/dialog.component';
 import { PeopleService } from '../shared/services/people.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'nwt-people',
@@ -17,13 +18,16 @@ export class PeopleComponent implements OnInit {
   private _dialogStatus: string;
   // private property to store dialog reference
   private _peopleDialog: MatDialogRef<DialogComponent, Person> | undefined;
+  // private property to store view value
+  private _view: string;
 
   /**
    * Component constructor
    */
-  constructor(private _peopleService: PeopleService, private _dialog: MatDialog) {
+  constructor(private _router: Router, private _peopleService: PeopleService, private _dialog: MatDialog) {
     this._people = [];
     this._dialogStatus = 'inactive';
+    this._view = 'card';
   }
 
   /**
@@ -38,6 +42,13 @@ export class PeopleComponent implements OnInit {
    */
   get dialogStatus(): string {
     return this._dialogStatus;
+  }
+
+  /**
+   * Returns private property _view
+   */
+  get view(): string {
+    return this._view;
   }
 
   /**
@@ -89,6 +100,20 @@ export class PeopleComponent implements OnInit {
         error: () => this._dialogStatus = 'inactive',
         complete: () => this._dialogStatus = 'inactive'
       });
+  }
+
+  /**
+   * Function to switch view
+   */
+  switchView(): void {
+    this._view = (this._view === 'card') ? 'list' : 'card';
+  }
+
+  /**
+   * Function to navigate to current person
+   */
+  navigate(id: string | undefined): void {
+    this._router.navigate([ '/person', id ]);
   }
 
   /**
