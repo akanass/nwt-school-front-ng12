@@ -19,7 +19,7 @@ export class PeopleComponent implements OnInit {
   // private property to store dialogStatus value
   private _dialogStatus: string;
   // private property to store dialog reference
-  private _peopleDialog: MatDialogRef<DialogComponent> | undefined;
+  private _peopleDialog: MatDialogRef<DialogComponent, Person> | undefined;
 
   /**
    * Component constructor
