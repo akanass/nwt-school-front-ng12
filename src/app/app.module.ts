@@ -22,9 +22,10 @@ import { FormComponent } from './shared/form/form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateComponent } from './update/update.component';
 import { NaPipe } from './shared/pipes/na.pipe';
+import { BadgeDirective } from './shared/directives/badge.directive';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, PersonComponent, PeopleComponent, CardComponent, DialogComponent, FormComponent, UpdateComponent, NaPipe],
+  declarations: [AppComponent, HomeComponent, PersonComponent, PeopleComponent, CardComponent, DialogComponent, FormComponent, UpdateComponent, NaPipe, BadgeDirective],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
