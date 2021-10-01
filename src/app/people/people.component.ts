@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Person } from '../shared/types/person.type';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { defaultIfEmpty, filter, mergeMap, Observable } from 'rxjs';
+import { defaultIfEmpty, filter, map, mergeMap, Observable } from 'rxjs';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogComponent } from '../shared/dialog/dialog.component';
 
@@ -12,7 +12,7 @@ import { DialogComponent } from '../shared/dialog/dialog.component';
   styleUrls: ['./people.component.css']
 })
 export class PeopleComponent implements OnInit {
-// private property to store people value
+  // private property to store people value
   private _people: Person[];
   // private property to store all backend URLs
   private readonly _backendURL: any;
@@ -91,6 +91,12 @@ export class PeopleComponent implements OnInit {
     this._peopleDialog.afterClosed()
       .pipe(
         filter((person: Person | undefined) => !!person),
+        map((person: Person | undefined) => {
+          // delete obsolete attributes in original object which are not required in the API
+          delete person?.photo;
+
+          return person;
+        }),
         mergeMap((person: Person | undefined) => this._add(person))
       )
       .subscribe({
