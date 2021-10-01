@@ -19,7 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from './shared/dialog/dialog.component';
 import { FormComponent } from './shared/form/form.component';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateComponent } from './update/update.component';
 
 @NgModule({
@@ -27,7 +27,7 @@ import { UpdateComponent } from './update/update.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MatToolbarModule,
     MatCardModule,

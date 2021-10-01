@@ -68,7 +68,6 @@ export class UpdateComponent implements OnInit {
           // delete obsolete attributes in original object which are not required in the API
           delete person?.id;
           delete person?.photo;
-          delete person?.birthDate;
 
           return { id, update: person };
         }),
