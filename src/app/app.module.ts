@@ -21,9 +21,10 @@ import { DialogComponent } from './shared/dialog/dialog.component';
 import { FormComponent } from './shared/form/form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateComponent } from './update/update.component';
+import { NaPipe } from './shared/pipes/na.pipe';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, PersonComponent, PeopleComponent, CardComponent, DialogComponent, FormComponent, UpdateComponent],
+  declarations: [AppComponent, HomeComponent, PersonComponent, PeopleComponent, CardComponent, DialogComponent, FormComponent, UpdateComponent, NaPipe],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
