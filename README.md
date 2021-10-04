@@ -1,27 +1,44 @@
 # NwtSchoolFrontNg12
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.7.
+This project is for **University courses** at the ***University of Lorraine in Nancy***.
 
-## Development server
+It covers all [Angular](https://angular.io) concepts in **21 steps**.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+To follow it, go to **documents folder** and read the [**2nd PDF**](https://github.com/akanass/nwt-school-front-ng10/blob/master/documents/2%20-%20Les%20Nouvelles%20Technologies%20du%20Web%20-%20Front.pdf).
 
-## Code scaffolding
+The [**1st one**](https://github.com/akanass/nwt-school-front-ng10/blob/master/documents/1%20-%20Les%20Nouvelles%20Technologies%20du%20Web%20-%20Annexe%20-%20Introduction.pdf) it's an **introduction** to explain the evolution of the web from the beginning to now.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This course is **only in French** and if you want to contribute and translate it, you're welcome :)
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Configuration
+<pre><code>
 
-## Running unit tests
+     _                      _                 ____ _     ___
+    / \   _ __   __ _ _   _| | __ _ _ __     / ___| |   |_ _|
+   / △ \ | '_ \ / _` | | | | |/ _` | '__|   | |   | |    | |
+  / ___ \| | | | (_| | |_| | | (_| | |      | |___| |___ | |
+ /_/   \_\_| |_|\__, |\__,_|_|\__,_|_|       \____|_____|___|
+                |___/
+    
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Angular CLI: 12.2.8
+Node: 16.10.0 (Unsupported)
+Package Manager: yarn 1.22.13
 
-## Running end-to-end tests
+Angular: 12.2.8
+... animations, cdk, cli, common, compiler, compiler-cli, core
+... forms, material, platform-browser, platform-browser-dynamic
+... router
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Package                         Version
+---------------------------------------------------------
+@angular-devkit/architect       0.1202.8
+@angular-devkit/build-angular   12.2.8
+@angular-devkit/core            12.2.8
+@angular-devkit/schematics      12.2.8
+@schematics/angular             12.2.8
+rxjs                            7.3.1
+typescript                      4.3.5
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+</code></pre>
