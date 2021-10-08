@@ -22,11 +22,11 @@ This course is **only in French** and if you want to contribute and translate it
                 |___/
     
 
-Angular CLI: 12.2.8
+Angular CLI: 12.2.9
 Node: 16.10.0 (Unsupported)
 Package Manager: yarn 1.22.15
 
-Angular: 12.2.8
+Angular: 12.2.9
 ... animations, cdk, cli, common, compiler, compiler-cli, core
 ... forms, material, platform-browser, platform-browser-dynamic
 ... router
@@ -34,11 +34,11 @@ Angular: 12.2.8
 Package                         Version
 ---------------------------------------------------------
 @angular-devkit/architect       0.1202.8
-@angular-devkit/build-angular   12.2.8
-@angular-devkit/core            12.2.8
-@angular-devkit/schematics      12.2.8
-@schematics/angular             12.2.8
-rxjs                            7.3.1
+@angular-devkit/build-angular   12.2.9
+@angular-devkit/core            12.2.9
+@angular-devkit/schematics      12.2.9
+@schematics/angular             12.2.9
+rxjs                            7.4.0
 typescript                      4.3.5
 
 </code></pre>
