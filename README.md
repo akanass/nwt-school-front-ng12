@@ -23,7 +23,7 @@ This course is **only in French** and if you want to contribute and translate it
     
 
 Angular CLI: 12.2.9
-Node: 16.10.0 (Unsupported)
+Node: 16.11.0 (Unsupported)
 Package Manager: yarn 1.22.15
 
 Angular: 12.2.9
